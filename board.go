@@ -24,12 +24,11 @@ func (b *Board) Play(moves chan uint) {
 			fmt.Println("Oes win!", b)
 			return
 		case ' ':
-			continue
+			fmt.Println(b.String())
 		case 'C':
 			fmt.Println("Cats Game(tie)", b)
 			return
 		}
-		fmt.Println(b.String())
 	}
 }
 
@@ -52,6 +51,7 @@ func (b Board) GameOver() player {
 			if !alreadywon {
 				won = player
 				alreadywon = true
+				log.Printf("%s\n%b\n", win, win)
 			} else {
 				if player != won {
 					panic("2 People cannot win!")
@@ -174,18 +174,18 @@ const (
 	XWin2      Board = XWin1 << 3
 	XWin3      Board = XWin1 << 6
 	XWin4      Board = XTopLeft | XMiddleLeft | XBottomLeft
-	XWin5      Board = XWin4 << 3
-	XWin6      Board = XWin4 << 6
+	XWin5      Board = XWin4 << 1
+	XWin6      Board = XWin4 << 2
 	XWin7      Board = XTopLeft | XMiddleCenter | XBottomRight
 	XWin8      Board = XTopRight | XMiddleCenter | XBottomLeft
 	OWin1      Board = XWin1 << PlayerShift
 	OWin2      Board = XWin1 << (PlayerShift + 3)
 	OWin3      Board = XWin1 << (PlayerShift + 6)
 	OWin4      Board = XWin4 << PlayerShift
-	OWin5      Board = XWin4 << (PlayerShift + 3)
-	OWin6      Board = XWin4 << (PlayerShift + 6)
-	OWin7      Board = OTopLeft | OMiddleCenter | OBottomRight
-	OWin8      Board = OTopRight | OMiddleCenter | OBottomLeft
+	OWin5      Board = XWin4 << (PlayerShift + 1)
+	OWin6      Board = XWin4 << (PlayerShift + 2)
+	OWin7      Board = XWin7 << PlayerShift
+	OWin8      Board = XWin8 << PlayerShift
 )
 
 var winner = map[Board]player{
