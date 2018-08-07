@@ -18,10 +18,10 @@ func (b *Board) Play(moves chan uint) {
 		}
 		switch b.GameOver() {
 		case 'X':
-			fmt.Println("Xes win!", b)
+			fmt.Println("Xs win!", b)
 			return
 		case 'O':
-			fmt.Println("Oes win!", b)
+			fmt.Println("Os win!", b)
 			return
 		case ' ':
 			fmt.Println(b.String())
